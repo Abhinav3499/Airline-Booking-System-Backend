@@ -2,3 +2,4 @@
 package.json
 package-lock.json
 .env
+src/config/config.json
