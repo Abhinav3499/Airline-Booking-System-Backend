@@ -85,10 +85,10 @@ const getAll = async (req, res) => {
     const cities = await cityService.getAllCities(req.query);
     return res.status(200).json({
       data: cities,
-      success: true, 
-      message: "Fetched all the cities", 
-      err: {}
-    }) 
+      success: true,
+      message: "Fetched all the cities",
+      err: {},
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({
@@ -98,12 +98,33 @@ const getAll = async (req, res) => {
       err: error,
     });
   }
-}
+};
+const getAirport = async (req, res) => {
+  try {
+    // console.log(req.params);
+    const airports = await cityService.getAirports(req.params.id);
+    return res.status(200).json({
+      data: airports,
+      success: true,
+      message: "Fetched all the airports",
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      data: {},
+      success: false,
+      message: "Could not get all the airports",
+      err: error,
+    });
+  }
+};
 
 module.exports = {
   create,
   destroy,
   update,
   get,
-  getAll
+  getAll,
+  getAirport
 };
