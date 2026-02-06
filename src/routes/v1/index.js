@@ -14,5 +14,6 @@ router.delete('/airport/:id', airportController.destroy);
 router.get('/airport/:id', airportController.get);
 router.patch('/airport/:id', airportController.update);
 router.get('/city/airport/:id', cityController.getAirport);
+router.post('/cityMultiple', cityController.createMultiple);
 
 module.exports = router; 

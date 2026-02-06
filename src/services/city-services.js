@@ -4,7 +4,14 @@ class CityService {
     constructor() {
         this.cityRepository = new CityRepository();
     }
-
+    async createMultipleCities(data) {
+        try {
+            const cities = await this.cityRepository.createMultipleCities(data); 
+            return cities;
+        } catch(error) {
+            throw(error);
+        }
+    }
     async createCity(name) {
         try {
             const city = await this.cityRepository.createCity(name);

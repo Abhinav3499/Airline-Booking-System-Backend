@@ -21,6 +21,26 @@ const create = async (req, res) => {
     });
   }
 };
+const createMultiple = async (req, res) => {
+  console.log(req.body)
+  try {
+    const city = await cityService.createMultipleCities(req.body);
+    return res.status(201).json({
+      data: city,
+      success: true,
+      message: "Successfully created the city",
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      data: {},
+      success: false,
+      message: "Could not create the city",
+      err: error,
+    });
+  }
+};
 
 const update = async (req, res) => {
   try {
@@ -126,5 +146,6 @@ module.exports = {
   update,
   get,
   getAll,
-  getAirport
+  getAirport,
+  createMultiple
 };

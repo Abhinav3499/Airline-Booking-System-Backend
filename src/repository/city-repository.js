@@ -2,6 +2,18 @@ const { City } = require("../models/index");
 const { Op } = require("sequelize");
 
 class CityRepository {
+  async createMultipleCities(data) {
+    try {
+      if (data.length != 0) {
+        const cities = await City.bulkCreate(data);
+        return cities;
+      } else {
+        return {};
+      }
+    } catch (error) {
+      throw { error };
+    }
+  }
   async createCity(name) {
     try {
       const city = await City.create(name);
