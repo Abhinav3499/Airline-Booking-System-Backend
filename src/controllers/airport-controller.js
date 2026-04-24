@@ -86,4 +86,4 @@ module.exports = {
     destroy, 
     update, 
     get
-}
+} 

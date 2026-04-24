@@ -14,20 +14,42 @@ module.exports = {
     */
    await queryInterface.bulkInsert('Airports', [
     {
-      name: 'Bhagalpur Airport',
-      cityId: 1, 
+      id: 1,
+      name: 'Indira Gandhi International Airport',
+      address: 'New Delhi',
+      cityId: 1,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      name: 'Una Airport',
-      cityId: 2, 
+      id: 2,
+      name: 'Chhatrapati Shivaji Maharaj International Airport',
+      address: 'Mumbai',
+      cityId: 2,
       createdAt: new Date(),
       updatedAt: new Date()
     },
     {
-      name: 'Una-2 Airport',
-      cityId: 2, 
+      id: 3,
+      name: 'Kempegowda International Airport',
+      address: 'Bengaluru',
+      cityId: 3,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      id: 4,
+      name: 'Netaji Subhas Chandra Bose International Airport',
+      address: 'Kolkata',
+      cityId: 4,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      id: 5,
+      name: 'Rajiv Gandhi International Airport',
+      address: 'Hyderabad',
+      cityId: 5,
       createdAt: new Date(),
       updatedAt: new Date()
     }
@@ -43,29 +65,16 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    // await queryInterface.bulkDelete(
-    //   "Airports",
-    //   [
-    //     {
-    //       name: "Bhagalpur Airport",
-    //       cityId: 1,
-    //       createdAt: new Date(),
-    //       updatedAt: new Date(),
-    //     },
-    //     {
-    //       name: "Una Airport",
-    //       cityId: 2,
-    //       createdAt: new Date(),
-    //       updatedAt: new Date(),
-    //     },
-    //     {
-    //       name: "Una-2 Airport",
-    //       cityId: 2,
-    //       createdAt: new Date(),
-    //       updatedAt: new Date(),
-    //     },
-    //   ],
-    //   {},
-    // );
+    await queryInterface.bulkDelete('Airports', {
+      name: {
+        [Sequelize.Op.in]: [
+          'Indira Gandhi International Airport',
+          'Chhatrapati Shivaji Maharaj International Airport',
+          'Kempegowda International Airport',
+          'Netaji Subhas Chandra Bose International Airport',
+          'Rajiv Gandhi International Airport'
+        ]
+      }
+    }, {});
   }
 };

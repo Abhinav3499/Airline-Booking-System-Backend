@@ -7,11 +7,11 @@ class AirportServices {
 
   async createAirport(airportName, address, cityId) {
     try {
-      const airport = await this.airportRespository.createAirport(
-        airportName,
+      const airport = await this.airportRespository.create({
+        name: airportName,
         address,
         cityId,
-      );
+      });
       return airport;
     } catch (error) {
       console.log("error with services layer");
@@ -21,12 +21,11 @@ class AirportServices {
   }
   async updateAirport(id, airportName, address, cityId) {
     try {
-      const airport = await this.airportRespository.updateAirport(
-        id,
-        airportName,
+      const airport = await this.airportRespository.update(id, {
+        name: airportName,
         address,
         cityId,
-      );
+      });
       return airport;
     } catch (error) {
       throw error;
@@ -34,7 +33,7 @@ class AirportServices {
   }
   async getAirport(id) {
     try {
-      const airport = await this.airportRespository.getAirport(id);
+      const airport = await this.airportRespository.get(id);
       return airport;
     } catch (error) {
       throw error;
@@ -42,7 +41,7 @@ class AirportServices {
   }
   async deleteAirport(id) {
     try {
-      const airport = await this.airportRespository.deleteAirport(id);
+      const airport = await this.airportRespository.destroy(id);
       return airport;
     } catch (error) {
       throw error;
