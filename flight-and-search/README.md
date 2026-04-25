@@ -1,5 +1,9 @@
 ## Welcome to the Flight Service
 
+Detailed learning notes for building this microservice step by step are available here:
+
+- [Flight and Search Microservice Notes](docs/doc.md)
+
 ### Project Setup 
 
 - Clone the repo on your local machine `git clone <REPO_URL>`
