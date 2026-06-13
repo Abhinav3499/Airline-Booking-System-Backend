@@ -1,5 +1,10 @@
 "use strict";
 const { Model } = require("sequelize");
+
+const { SALT } = require('../config/serverConfig');
+
+const bcrypt = require('bcrypt');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -34,5 +39,17 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "User",
     },
   );
+
+  User.beforeCreate((user) => {
+    // salt = bcrypt.genSalt(SALT); 
+    // console.log(user); 
+    const encryptedPassword = bcrypt.hashSync(user.password, SALT); 
+    user.password = encryptedPassword;
+    // console.log(user); 
+  })
   return User;
 };
+
+
+// model is the best place to setup the encryption
+// setup a trigger (Hooks)
